@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainNode" prefHeight="459.0" prefWidth="857.0" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dpcommunication.controller.LoginFormController">
+   <children>
+      <AnchorPane fx:id="imagenode" prefHeight="531.0" prefWidth="368.0" style="-fx-background-color: #eeeeee;">
+         <children>
+            <ImageView fx:id="rootNode" fitHeight="531.0" fitWidth="531.0" layoutX="-78.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/Free%20Vector%20_%20Printer%20concept%20illustration.jpeg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="104.0" fitWidth="104.0" layoutX="466.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/WhatsApp%20Image%202024-06-01%20at%2017.16.59_cd2c1d55.jpg" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="575.0" layoutY="15.0" prefHeight="65.0" prefWidth="282.0" text="DP Communication" textFill="#f8f1f1">
+         <font>
+            <Font name="Agency FB Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="466.0" layoutY="129.0" prefHeight="65.0" prefWidth="130.0" text="Login" textFill="#64dd17">
+         <font>
+            <Font name="Agency FB Bold" size="53.0" />
+         </font>
+      </Label>
+      <Separator layoutX="453.0" layoutY="125.0" prefHeight="4.0" prefWidth="403.0" />
+      <Label alignment="BASELINE_RIGHT" layoutX="589.0" layoutY="66.0" prefHeight="29.0" prefWidth="255.0" text="The Gold Mark Of Printing Art" textFill="#eeecec">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserName" layoutX="566.0" layoutY="248.0" prefHeight="48.0" prefWidth="255.0" promptText="User Name" style="-fx-background-radius: 25px;">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnLogin" layoutX="493.0" layoutY="414.0" mnemonicParsing="false" onAction="#loginOnAction" onKeyPressed="#loginkeyOnAction" prefHeight="58.0" prefWidth="340.0" style="-fx-background-radius: 25px; -fx-background-color: #64dd17;" text="Login">
+         <font>
+            <Font name="Agency FB Bold" size="31.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="44.0" fitWidth="53.0" layoutX="570.0" layoutY="421.0">
+         <image>
+            <Image url="@../icons/login.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="58.0" fitWidth="63.0" layoutX="475.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/customer.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="58.0" fitWidth="58.0" layoutX="481.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/icons8-password-64.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="453.0" layoutY="200.0" prefHeight="4.0" prefWidth="139.0" />
+      <PasswordField fx:id="pwdPassword" layoutX="570.0" layoutY="328.0" prefHeight="48.0" prefWidth="255.0" promptText="Password" style="-fx-background-radius: 25px;">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </PasswordField>
+   </children>
+</AnchorPane>

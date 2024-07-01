@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="financialPane" prefHeight="607.0" prefWidth="724.0" style="-fx-background-color: #757575;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dpcommunication.controller.InstancePayFormController">
+   <children>
+      <Pane layoutX="72.0" layoutY="13.0" prefHeight="76.0" prefWidth="581.0" style="-fx-background-color: #607d8b; -fx-background-radius: 25px; -fx-border-color: #212121; -fx-border-radius: 25px; -fx-border-width: 2px 2px 2px 2px;">
+         <children>
+            <Label alignment="CENTER" layoutX="74.0" layoutY="2.0" prefHeight="67.0" prefWidth="465.0" text="Financial Management">
+               <font>
+                  <Font name="Agency FB Bold" size="60.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="63.0" layoutY="127.0" prefHeight="51.0" prefWidth="167.0" text="INSTANCE PAY" textFill="#19ff20">
+         <font>
+            <Font name="Agency FB Bold" size="33.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="20.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/icons8-student-activity-50.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="30.0" layoutY="169.0" prefWidth="200.0" />
+      <TableView fx:id="tblInstancePay" layoutX="27.0" layoutY="185.0" prefHeight="354.0" prefWidth="672.0">
+        <columns>
+          <TableColumn fx:id="colCustomer" prefWidth="62.0" text="Customer" />
+          <TableColumn fx:id="colDate" prefWidth="92.0" text="Date" />
+            <TableColumn fx:id="colItem" prefWidth="120.0" text="Items" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="57.0" text="UnitPrice" />
+            <TableColumn fx:id="colQty" prefWidth="40.0" text="Qty" />
+            <TableColumn fx:id="colCost" prefWidth="63.0" text="Cost" />
+            <TableColumn fx:id="colReceivedMoney" prefWidth="93.0" text="Received_Money" />
+            <TableColumn fx:id="colArrears" prefWidth="68.0" text="Arrears" />
+            <TableColumn fx:id="colStatus" prefWidth="81.0" text="Status" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnBack" layoutX="44.0" layoutY="558.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="35.0" prefWidth="86.0" text="Back" />
+      <Button fx:id="btnIncomplete" layoutX="529.0" layoutY="558.0" mnemonicParsing="false" onAction="#getIncompleteOnAction" prefHeight="35.0" prefWidth="147.0" text="Get Incomplete Orders" />
+   </children>
+</AnchorPane>

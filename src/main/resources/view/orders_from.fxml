@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="itemsPane" prefHeight="607.0" prefWidth="724.0" style="-fx-background-color: #757575;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dpcommunication.controller.OrdersFormController">
+   <children>
+      <Pane layoutX="100.0" layoutY="14.0" prefHeight="82.0" prefWidth="488.0" style="-fx-background-color: #607d8b; -fx-background-radius: 30px; -fx-border-color: #212121; -fx-border-radius: 30px; -fx-border-width: 2px 2px 2px 2px;">
+         <children>
+            <Label alignment="CENTER" layoutX="60.0" layoutY="9.0" prefHeight="0.0" prefWidth="369.0" text="Place Order">
+               <font>
+                  <Font name="Agency FB Bold" size="55.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="20.0" layoutY="118.0" prefHeight="32.0" prefWidth="100.0" text="Order ID     :">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOrderId" alignment="CENTER" layoutX="120.0" layoutY="118.0" prefHeight="32.0" prefWidth="79.0">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="407.0" layoutY="118.0" prefHeight="32.0" prefWidth="108.0" text="Order Date     :">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" alignment="CENTER" layoutX="522.0" layoutY="118.0" prefHeight="32.0" prefWidth="130.0" text="2024.06.10">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="163.0" prefHeight="39.0" prefWidth="108.0" text="Customer    :">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbCustomers" layoutX="124.0" layoutY="167.0" prefHeight="32.0" prefWidth="158.0" promptText="Select Customer" />
+      <Button fx:id="btnNewCus" alignment="BASELINE_RIGHT" layoutX="307.0" layoutY="163.0" mnemonicParsing="false" onAction="#newCustomerOnAction" prefHeight="39.0" prefWidth="71.0" style="-fx-background-color: #76ff03;" text="New">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="18.0" fitWidth="23.0" layoutX="307.0" layoutY="174.0">
+         <image>
+            <Image url="@../icons/save.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="407.0" layoutY="163.0" prefHeight="39.0" prefWidth="108.0" text="Net Total        :">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="229.0" prefHeight="39.0" prefWidth="108.0" text="Items   :">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbItem" layoutX="21.0" layoutY="268.0" onAction="#cmbItemOnAction" prefHeight="32.0" prefWidth="186.0" promptText="select Items" />
+      <Label layoutX="265.0" layoutY="229.0" prefHeight="39.0" prefWidth="108.0" text="Item Code  :">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCode" alignment="CENTER" layoutX="261.0" layoutY="265.0" prefHeight="39.0" prefWidth="115.0" style="-fx-border-color: #212121;" textFill="#f5f5f5">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="436.0" layoutY="229.0" prefHeight="39.0" prefWidth="108.0" text="UnitPrice   :">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="585.0" layoutY="229.0" prefHeight="39.0" prefWidth="108.0" text="Qty   :">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtQty" layoutX="581.0" layoutY="265.0" prefHeight="39.0" prefWidth="100.0" style="-fx-border-color: #212121;" />
+      <Label fx:id="lblPrice" alignment="CENTER" layoutX="433.0" layoutY="265.0" prefHeight="39.0" prefWidth="115.0" style="-fx-border-color: #212121;" textFill="#f5f5f5">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblOrders" layoutX="7.0" layoutY="364.0" prefHeight="185.0" prefWidth="702.0">
+        <columns>
+          <TableColumn fx:id="colDate" prefWidth="79.0" text="Date" />
+          <TableColumn fx:id="colOrderId" prefWidth="96.0" text="OrderID" />
+            <TableColumn fx:id="colCusId" prefWidth="93.0" text="CusID" />
+            <TableColumn fx:id="colDescription" prefWidth="115.0" text="Description" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="104.0" text="UnitPrice" />
+            <TableColumn fx:id="colQty" prefWidth="86.0" text="Qty" />
+            <TableColumn fx:id="colTotal" prefWidth="127.0" text="Total" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAddToCart" alignment="BASELINE_RIGHT" layoutX="540.0" layoutY="321.0" mnemonicParsing="false" onAction="#addToCartOnAction" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: #69f0ae; -fx-background-radius: 25px; -fx-border-color: #212121; -fx-border-radius: 25px;" text="Add To Cart">
+         <font>
+            <Font name="Agency FB Bold" size="16.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="555.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/icons8-open-box-50.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnPlaceOrder" alignment="BASELINE_RIGHT" layoutX="378.0" layoutY="554.0" mnemonicParsing="false" onAction="#placeOrderOnAction" prefHeight="39.0" prefWidth="136.0" style="-fx-background-color: #d84315; -fx-background-radius: 25px; -fx-border-color: #212121; -fx-border-radius: 25px;" text="Place Order">
+         <font>
+            <Font name="Agency FB Bold" size="16.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="391.0" layoutY="557.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/icons8-profit-50.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnViewBill" alignment="BASELINE_RIGHT" layoutX="37.0" layoutY="554.0" mnemonicParsing="false" onAction="#viewBillOnAction" prefHeight="39.0" prefWidth="158.0" style="-fx-background-color: #9c27b0; -fx-background-radius: 25px; -fx-border-color: #212121; -fx-border-radius: 25px;" text="View Bill">
+         <font>
+            <Font name="Agency FB Bold" size="16.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="39.0" fitWidth="32.0" layoutX="84.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/icons8-papers-96.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblNetTotal" alignment="CENTER" layoutX="530.0" layoutY="167.0" prefHeight="32.0" prefWidth="130.0" style="-fx-border-color: #212121;" textFill="#e4dede">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnViewOrders" alignment="BASELINE_RIGHT" layoutX="45.0" layoutY="318.0" mnemonicParsing="false" onAction="#viewOrdersOnAction" prefHeight="39.0" prefWidth="158.0" style="-fx-background-color: #9c27b0; -fx-background-radius: 25px; -fx-border-color: #212121; -fx-border-radius: 25px;" text="View Orders">
+         <font>
+            <Font name="Agency FB Bold" size="16.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="84.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/icons8-profit-50.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="cmbPaid" layoutX="247.0" layoutY="557.0" onAction="#cmbPaidOnAction" prefHeight="32.0" prefWidth="121.0" promptText="Paid/Unpaid" />
+      <Button fx:id="btnGetMoney" alignment="BASELINE_RIGHT" layoutX="584.0" layoutY="557.0" mnemonicParsing="false" onAction="#GetMoneyOnAction" prefHeight="39.0" prefWidth="136.0" style="-fx-background-color: #76ff03; -fx-background-radius: 25px; -fx-border-color: #212121; -fx-border-radius: 25px;" text="Get Money">
+         <font>
+            <Font name="Agency FB Bold" size="16.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="603.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/icons8-profit-50.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
