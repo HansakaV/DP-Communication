@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="customerNode" prefHeight="607.0" prefWidth="724.0" style="-fx-background-color: #757575;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dpcommunication.controller.OtherItemFormController">
+   <children>
+      <Pane layoutX="70.0" layoutY="22.0" prefHeight="91.0" prefWidth="594.0" style="-fx-background-color: #607d8b; -fx-background-radius: 30px; -fx-border-color: #212121; -fx-border-radius: 30px; -fx-border-width: 2px 2px 2px 2px;">
+         <children>
+            <Label alignment="CENTER" layoutX="14.0" layoutY="4.0" prefHeight="84.0" prefWidth="565.0" text="Items Manage">
+               <font>
+                  <Font name="Agency FB Bold" size="60.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="14.0" layoutY="161.0" prefHeight="37.0" prefWidth="100.0" text="Item Code  :">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtcode" layoutX="114.0" layoutY="162.0" prefHeight="39.0" prefWidth="182.0" promptText="Code(I001)">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="373.0" layoutY="163.0" prefHeight="37.0" prefWidth="118.0" text="Description  :">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDescription" layoutX="493.0" layoutY="162.0" prefHeight="39.0" prefWidth="172.0" promptText="Description">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="14.0" layoutY="235.0" prefHeight="37.0" prefWidth="89.0" text="Quantity    :">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtQty" layoutX="114.0" layoutY="234.0" prefHeight="39.0" prefWidth="182.0" promptText="Quentity">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnSave" alignment="BASELINE_RIGHT" layoutX="17.0" layoutY="291.0" mnemonicParsing="false" onAction="#saveOnAction" prefHeight="41.0" prefWidth="107.0" style="-fx-background-color: #76ff03;" text="Save">
+         <font>
+            <Font name="Agency FB Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnUpdate" alignment="BASELINE_RIGHT" layoutX="165.0" layoutY="291.0" mnemonicParsing="false" onAction="#updateOnAction" prefHeight="41.0" prefWidth="107.0" style="-fx-background-color: #9c27b0;" text="Update">
+         <font>
+            <Font name="Agency FB Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnDelete" alignment="BASELINE_RIGHT" layoutX="309.0" layoutY="294.0" mnemonicParsing="false" onAction="#deleteOnAction" prefHeight="41.0" prefWidth="107.0" style="-fx-background-color: #f44336;" text="Delete">
+         <font>
+            <Font name="Agency FB Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnClear" alignment="BASELINE_RIGHT" layoutX="466.0" layoutY="294.0" mnemonicParsing="false" onAction="#clearOnAction" prefHeight="41.0" prefWidth="107.0" style="-fx-background-color: #cddc39;" text="Clear">
+         <font>
+            <Font name="Agency FB Bold" size="22.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="37.0" fitWidth="35.0" layoutX="26.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/save.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="170.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/update.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="316.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/delete.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="476.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/clear.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tblOtherItems" layoutX="17.0" layoutY="357.0" prefHeight="206.0" prefWidth="530.0">
+        <columns>
+          <TableColumn fx:id="colCode" prefWidth="98.0" text="Item Code" />
+          <TableColumn fx:id="colDescription" prefWidth="140.0" text="Description" />
+            <TableColumn fx:id="colPrice" minWidth="2.0" prefWidth="145.0" text="Unit Price" />
+            <TableColumn fx:id="colQty" minWidth="2.0" prefWidth="145.0" text="Qty On Hand" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnGetItems" alignment="BASELINE_RIGHT" layoutX="560.0" layoutY="533.0" mnemonicParsing="false" onAction="#getItemsOnAction" prefHeight="61.0" prefWidth="156.0" style="-fx-background-color: #76ff03; -fx-background-radius: 30px;" text="Get Itms List">
+         <font>
+            <Font name="Agency FB Bold" size="22.0" />
+         </font>
+      </Button>
+      <Label layoutX="373.0" layoutY="235.0" prefHeight="37.0" prefWidth="118.0" text="Unit Price     :">
+         <font>
+            <Font name="Agency FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPrice" layoutX="493.0" layoutY="234.0" prefHeight="39.0" prefWidth="172.0" promptText="UnitPrice">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="37.0" fitWidth="35.0" layoutX="573.0" layoutY="546.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/icons8-bookshop-consultant-50.png" />
+         </image></ImageView>
+      <ImageView fitHeight="130.0" fitWidth="156.0" layoutX="560.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/Free%20Vector%20_%20Printer%20concept%20illustration.jpeg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

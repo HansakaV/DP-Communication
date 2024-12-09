@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Maven: net.adeonatech:SmsAPI:1.0.5" type="java-imported" external-system-id="Maven">
+    <properties groupId="net.adeonatech" artifactId="SmsAPI" version="1.0.5" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/adeonatech/SmsAPI/1.0.5/SmsAPI-1.0.5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/net/adeonatech/SmsAPI/1.0.5/SmsAPI-1.0.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/adeonatech/SmsAPI/1.0.5/SmsAPI-1.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
