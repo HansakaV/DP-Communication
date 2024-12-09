@@ -1,5 +1,6 @@
 package lk.ijse.dpcommunication.repository;
 
+import lk.ijse.dpcommunication.controller.CustomOrder;
 import lk.ijse.dpcommunication.db.DbConnection;
 import lk.ijse.dpcommunication.model.placeOrder;
 
@@ -23,12 +24,13 @@ public class placeOrderRepo {
                 return false;
             }
 
-            boolean isQtyUpdated = itemRepo.update(po.getOdList(), connection);
+           /* boolean isQtyUpdated = itemRepo.update(po.getOdList(), connection);
             System.out.println("Quantity updated: " + isQtyUpdated);
             if (!isQtyUpdated) {
                 connection.rollback();
                 return false;
-            }
+            }*/
+
 
             boolean isOrderDetailSaved = orderDetailRepo.save(po.getOdList(), connection);
             System.out.println("Order detail saved: " + isOrderDetailSaved);

@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="itemsPane" prefHeight="607.0" prefWidth="724.0" style="-fx-background-color: #757575;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dpcommunication.controller.OrdersFormController">
+<AnchorPane fx:id="itemsPane" prefHeight="607.0" prefWidth="724.0" style="-fx-background-color: #757575;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dpcommunication.controller.CustomOrderFormController">
    <children>
-      <Pane layoutX="75.0" layoutY="14.0" prefHeight="82.0" prefWidth="488.0" style="-fx-background-color: #607d8b; -fx-background-radius: 30px; -fx-border-color: #212121; -fx-border-radius: 30px; -fx-border-width: 2px 2px 2px 2px;">
+      <Pane layoutX="99.0" layoutY="14.0" prefHeight="82.0" prefWidth="488.0" style="-fx-background-color: #607d8b; -fx-background-radius: 30px; -fx-border-color: #212121; -fx-border-radius: 30px; -fx-border-width: 2px 2px 2px 2px;">
          <children>
-            <Label alignment="CENTER" layoutX="60.0" layoutY="9.0" prefHeight="0.0" prefWidth="369.0" text="Place Order">
+            <Label alignment="CENTER" layoutX="60.0" layoutY="9.0" prefHeight="68.0" prefWidth="391.0" text="Place Custom Order">
                <font>
                   <Font name="Agency FB Bold" size="55.0" />
                </font>
@@ -64,23 +64,12 @@
             <Font name="Agency FB Bold" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="27.0" layoutY="229.0" prefHeight="39.0" prefWidth="108.0" text="Items   :">
+      <Label layoutX="27.0" layoutY="229.0" prefHeight="39.0" prefWidth="108.0" text="Description  :">
          <font>
             <Font name="Agency FB Bold" size="21.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbItem" layoutX="21.0" layoutY="268.0" onAction="#cmbItemOnAction" prefHeight="32.0" prefWidth="186.0" promptText="select Items" />
-      <Label layoutX="265.0" layoutY="229.0" prefHeight="39.0" prefWidth="108.0" text="Item Code  :">
-         <font>
-            <Font name="Agency FB Bold" size="21.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblCode" alignment="CENTER" layoutX="261.0" layoutY="265.0" prefHeight="39.0" prefWidth="115.0" style="-fx-border-color: #212121;" textFill="#f5f5f5">
-         <font>
-            <Font name="Agency FB Bold" size="21.0" />
-         </font>
-      </Label>
-      <Label layoutX="436.0" layoutY="229.0" prefHeight="39.0" prefWidth="108.0" text="UnitPrice   :">
+      <Label layoutX="304.0" layoutY="229.0" prefHeight="39.0" prefWidth="108.0" text="Cost   :">
          <font>
             <Font name="Agency FB Bold" size="21.0" />
          </font>
@@ -90,12 +79,7 @@
             <Font name="Agency FB Bold" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="txtQty" layoutX="581.0" layoutY="265.0" prefHeight="39.0" prefWidth="100.0" style="-fx-border-color: #212121;" />
-      <Label fx:id="lblPrice" alignment="CENTER" layoutX="433.0" layoutY="265.0" prefHeight="39.0" prefWidth="115.0" style="-fx-border-color: #212121;" textFill="#f5f5f5">
-         <font>
-            <Font name="Agency FB Bold" size="21.0" />
-         </font>
-      </Label>
+      <TextField fx:id="txtQty" layoutX="560.0" layoutY="265.0" prefHeight="39.0" prefWidth="100.0" style="-fx-border-color: #212121;" />
       <TableView fx:id="tblOrders" layoutX="7.0" layoutY="364.0" prefHeight="185.0" prefWidth="702.0">
         <columns>
           <TableColumn fx:id="colDate" prefWidth="79.0" text="Date" />
@@ -163,10 +147,7 @@
             <Image url="@../icons/icons8-profit-50.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnPlaceCustomOrder" alignment="BASELINE_RIGHT" layoutX="599.0" layoutY="21.0" mnemonicParsing="false" onAction="#customOrderOnAction" prefHeight="68.0" prefWidth="108.0" style="-fx-background-color: #d84315; -fx-background-radius: 25px; -fx-border-color: #212121; -fx-border-radius: 25px;" text="Custom Order ">
-         <font>
-            <Font name="Agency FB Bold" size="16.0" />
-         </font>
-      </Button>
+      <TextField fx:id="txtdesc" layoutX="20.0" layoutY="265.0" prefHeight="39.0" prefWidth="219.0" style="-fx-border-color: #212121;" />
+      <TextField fx:id="txtcost" layoutX="298.0" layoutY="265.0" prefHeight="39.0" prefWidth="164.0" style="-fx-border-color: #212121;" />
    </children>
 </AnchorPane>

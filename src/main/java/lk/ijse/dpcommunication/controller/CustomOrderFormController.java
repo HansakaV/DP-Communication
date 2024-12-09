@@ -9,14 +9,15 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.dpcommunication.db.DbConnection;
-import lk.ijse.dpcommunication.model.*;
+import lk.ijse.dpcommunication.model.item;
+import lk.ijse.dpcommunication.model.order;
+import lk.ijse.dpcommunication.model.orderDetail;
+import lk.ijse.dpcommunication.model.placeOrder;
 import lk.ijse.dpcommunication.model.tm.cartTm;
 import lk.ijse.dpcommunication.repository.customerRepo;
 import lk.ijse.dpcommunication.repository.itemRepo;
@@ -26,9 +27,7 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import org.controlsfx.control.Notifications;
-
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -38,7 +37,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class OrdersFormController {
+public class CustomOrderFormController {
 
     public TableColumn colDescription;
     public TableColumn colCusId;
@@ -51,6 +50,8 @@ public class OrdersFormController {
     public Button btnNewCus;
     public ComboBox cmbPaid;
     public Button btnGetMoney;
+    public TextField txtdesc;
+    public TextField txtcost;
     @FXML
     private Button btnAddToCart;
 
@@ -85,9 +86,6 @@ public class OrdersFormController {
     private Label lblOrderId;
 
     @FXML
-    private Label lblPrice;
-
-    @FXML
     private TableView<cartTm> tblOrders;
 
     @FXML
@@ -100,14 +98,13 @@ public class OrdersFormController {
     private int tempQty;
 
     public void initialize() throws SQLException {
-        getItemCodes();
         getCustomers();
         getCurrentOrderId();
         calculateNetTotal();
         setCellValueFactory();
         setDate();
         showStatus();
-       // saveID();
+        // saveID();
     }
     public void showStatus() {
         List<String> listS = new ArrayList();
@@ -134,20 +131,6 @@ public class OrdersFormController {
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
     }
 
-    private void getItemCodes() {
-        ObservableList<String> obList = FXCollections.observableArrayList();
-        try {
-            List<String> codeList = itemRepo.getCodes();
-
-            for (String code : codeList) {
-                obList.add(code);
-            }
-            cmbItem.setItems(obList);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
     private void getCustomers(){
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
@@ -191,10 +174,10 @@ public class OrdersFormController {
         String date = lblDate.getText();
         String orderId= lblOrderId.getText();
         String cusId = cmbCustomers.getValue();
-        String desc = cmbItem.getValue();
+        String desc = txtdesc.getText();
         int qty = Integer.parseInt(txtQty.getText());
         tempQty = qty;
-        double unitPrice = Double.parseDouble(lblPrice.getText());
+        double unitPrice = Double.parseDouble(txtcost.getText());
         double total = qty * unitPrice;
 
       /*  for (int i = 0; i < tblOrders.getItems().size(); i++) {
@@ -234,7 +217,7 @@ public class OrdersFormController {
 
         timeline.setCycleCount(1); // Ensure it only runs once
         timeline.play(); // Start the timeline
-       // txtQty.setText("");
+        // txtQty.setText("");
         processTableValues();
         //System.out.println("Weda meka");
 //       boolean added =  orderRepo.saveCart(tm);
@@ -243,7 +226,7 @@ public class OrdersFormController {
 //       }
 
     }
-//    private void saveID() throws SQLException {
+    //    private void saveID() throws SQLException {
 //        String Id = lblOrderId.getText();
 //        OrderId orderId1 = new OrderId(Id);
 //       boolean saved =  orderRepo.saveID(orderId1);
@@ -255,7 +238,7 @@ public class OrdersFormController {
     private void clearItems(){
         cmbItem.setValue("");
         txtQty.setText("");
-        lblPrice.setText("");
+        txtcost.setText("");
         lblCode.setText("");
 
     }
@@ -297,9 +280,9 @@ public class OrdersFormController {
         String date = lblDate.getText();
         String orderId = lblOrderId.getText();
         String cusId = cmbCustomers.getValue();
-        String desc = cmbItem.getValue();
+        String desc = txtdesc.getText();
         String payment = String.valueOf(cmbPaid.getValue());
-        double unitPrice = Double.parseDouble(lblPrice.getText());
+        double unitPrice = Double.parseDouble(txtcost.getText());
         //System.out.println("Weda ne 1");
         double total = Double.parseDouble(lblNetTotal.getText());
         double updatedTotal = Double.parseDouble(lblNetTotal.getText());
@@ -361,7 +344,7 @@ public class OrdersFormController {
     }
 
 
-        @FXML
+    @FXML
     void printBillOnAction(ActionEvent event) throws JRException, SQLException {
         JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/reports/dp_order.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
@@ -397,23 +380,6 @@ public class OrdersFormController {
 
 
 
-
-    public void cmbItemOnAction(ActionEvent actionEvent) {
-        String desc = cmbItem.getValue();
-
-        try {
-            item item1 = itemRepo.searchByCode(desc);
-            if (item1!=null){
-                lblCode.setText(item1.getId());
-                lblPrice.setText(String.valueOf(item1.getUnitPrice()));
-            }
-            txtQty.requestFocus();
-        }catch (SQLException e){
-            throw new RuntimeException(e);
-        }
-
-    }
-
     public void viewOrdersOnAction(ActionEvent actionEvent) throws IOException {
         AnchorPane Form = FXMLLoader.load(this.getClass().getResource("/view/ordersView_form.fxml"));
         itemsPane.getChildren().clear();
@@ -427,9 +393,9 @@ public class OrdersFormController {
     }
 
     public void GetMoneyOnAction(ActionEvent actionEvent) throws IOException {
-       AnchorPane Form = FXMLLoader.load(this.getClass().getResource("/view/payNow_form.fxml"));
-       itemsPane.getChildren().clear();
-       itemsPane.getChildren().add(Form);
+        AnchorPane Form = FXMLLoader.load(this.getClass().getResource("/view/payNow_form.fxml"));
+        itemsPane.getChildren().clear();
+        itemsPane.getChildren().add(Form);
 
     }
 
@@ -442,11 +408,6 @@ public class OrdersFormController {
         }
     }
 
-    public void customOrderOnAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane Form = FXMLLoader.load(this.getClass().getResource("/view/custom_orders_from.fxml"));
-        itemsPane.getChildren().clear();
-        itemsPane.getChildren().add(Form);
 
 
-    }
 }
