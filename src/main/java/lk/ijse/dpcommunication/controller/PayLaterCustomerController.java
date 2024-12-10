@@ -20,6 +20,7 @@ import lk.ijse.dpcommunication.model.PayLaterFinancialDTO;
 import lk.ijse.dpcommunication.model.tm.cartTm;
 import lk.ijse.dpcommunication.repository.FinancialRepo;
 import lk.ijse.dpcommunication.repository.customerRepo;
+import lk.ijse.dpcommunication.repository.orderRepo;
 import net.adeonatech.dto.SendTextBody;
 import net.adeonatech.dto.TokenBody;
 import net.adeonatech.dto.TransactionBody;
@@ -33,6 +34,8 @@ import org.controlsfx.control.Notifications;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -102,15 +105,57 @@ public class PayLaterCustomerController {
     private String customerMobileNumber;
     private String[] statusList = new String[]{"Complete", "Incomplete"};
 
+    LocalDate now = LocalDate.now();
+    private String Invoice = null;
+
+   /* private void getCurrentBillId(){
+        try{
+            String id = orderRepo.getCurrentBillId();
+            String nextId = generateNextBillId(id);
+            Invoice = nextId;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
+    }*/
+   private String generateNextBillId(String id) {
+       if (id != null && id.startsWith("DP")) {
+           String numericPart = id.substring(2); // Extract numeric part (after "DP")
+           int idNum = Integer.parseInt(numericPart); // Convert to integer
+           return String.format("DP%03d", ++idNum); // Increment and format with leading zeros
+       }
+       return "DP001"; // Default to DP001 if no valid ID exists
+   }
+   private void saveId(String id) {
+       try {
+           orderRepo.saveBillId(id);
+           System.out.println("Bill ID saved: " + id);
+       } catch (SQLException e) {
+           throw new RuntimeException(e);
+       }
+   }
 
     @FXML
     void GenarateBillOnAction(ActionEvent event) throws JRException, SQLException {
-        JasperDesign jasperDesign = JRXmlLoader.load(getClass().getResourceAsStream("/reports/DP_PAYLATER.jrxml"));
+        JasperDesign jasperDesign = JRXmlLoader.load(getClass().getResourceAsStream("/reports/Pay_Later_DP.jrxml"));
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        String currentBillId = orderRepo.getCurrentBillId();
+        String nextBillId = generateNextBillId(currentBillId);
+        saveId(nextBillId);
+
+        Invoice = nextBillId;
+
+        // Print or log the new bill ID (for debugging purposes)
+        System.out.println("Generated Bill ID: " + Invoice);
 
         // Prepare parameters for the report
         Map<String, Object> data = new HashMap<>();
         data.put("customerName", cmbCustomer.getValue());
+        data.put("Today", now.toString());
+        data.put("InvoiceID", Invoice);
+
+
 
         // Fill report with data from database connection
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, data, DbConnection.getInstance().getConnection());

@@ -3,6 +3,7 @@ package lk.ijse.dpcommunication.repository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.dpcommunication.db.DbConnection;
+import lk.ijse.dpcommunication.model.customer;
 import lk.ijse.dpcommunication.model.order;
 import lk.ijse.dpcommunication.model.orderDetail;
 
@@ -22,6 +23,27 @@ public class orderRepo {
             return orderId;
         }
         return null;
+    }
+    public static String getCurrentBillId() throws SQLException {
+        String sql = "SELECT billId FROM bill ORDER BY billId DESC LIMIT 1";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next()) {
+            String orderId = resultSet.getString(1);
+            return orderId;
+        }
+        return null;
+    }
+    public static boolean saveBillId(String id) throws SQLException {
+        String sql = "INSERT INTO bill VALUES(?)";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setObject(1, id);
+
+
+        return pstm.executeUpdate() > 0;
     }
 
 
